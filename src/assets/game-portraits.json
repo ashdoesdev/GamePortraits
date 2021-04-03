@@ -5,88 +5,103 @@
             "color": "#355d38",
             "dimensions": [
                 {
-                    "width": "692px",
-                    "height": "1024px"
+                    "name": "fullLength",
+                    "width": 692,
+                    "height": 1024
                 },
                 {
-                    "width": "330px",
-                    "height": "432px"
+                    "name": "medium",
+                    "width": 330,
+                    "height": 432
                 },
                 {
-                    "width": "185px",
-                    "height": "242px"
+                    "name": "small",
+                    "width": 185,
+                    "height": 242
                 }
             ]
         },
         {
-            "name": "Baldur's Gate",
+            "name": "Infinity Engine",
             "color": "#77231b",
             "dimensions": [
                 {
-                    "width": "692px",
-                    "height": "1024px"
+                    "name": "fullLength",
+                    "width": 692,
+                    "height": 1024
                 },
                 {
-                    "width": "330px",
-                    "height": "432px"
+                    "name": "medium",
+                    "width": 330,
+                    "height": 432
                 },
                 {
-                    "width": "185px",
-                    "height": "242px"
+                    "name": "small",
+                    "width": 185,
+                    "height": 242
                 }
             ]
         },
         {
-            "name": "Baldur's Gate 2",
+            "name": "Infinity Engine Enhanced Edition",
             "color": "#2b4d67",
             "dimensions": [
                 {
-                    "width": "692px",
-                    "height": "1024px"
+                    "name": "fullLength",
+                    "width": 692,
+                    "height": 1024
                 },
                 {
-                    "width": "330px",
-                    "height": "432px"
+                    "name": "medium",
+                    "width": 330,
+                    "height": 432
                 },
                 {
-                    "width": "185px",
-                    "height": "242px"
+                    "name": "small",
+                    "width": 185,
+                    "height": 242
                 }
             ]
         },
         {
-            "name": "Icewind Dale",
-            "color": "#277e78",
-            "dimensions": [
-                {
-                    "width": "692px",
-                    "height": "1024px"
-                },
-                {
-                    "width": "330px",
-                    "height": "432px"
-                },
-                {
-                    "width": "185px",
-                    "height": "242px"
-                }
-            ]
-        },
-        {
-            "name": "Icewind Dale 2",
+            "name": "Neverwinter Nights",
             "color": "#536f61",
             "dimensions": [
                 {
-                    "width": "692px",
-                    "height": "1024px"
+                    "name": "fullLength",
+                    "width": 692,
+                    "height": 1024
                 },
                 {
-                    "width": "330px",
-                    "height": "432px"
+                    "name": "medium",
+                    "width": 330,
+                    "height": 432
                 },
                 {
-                    "width": "185px",
-                    "height": "242px"
+                    "name": "small",
+                    "width": 185,
+                    "height": 242
+                }
+            ]
+        },
+        {
+            "name": "Temple of Elemental Evil",
+            "color": "#536f61",
+            "dimensions": [
+                {
+                    "name": "fullLength",
+                    "width": 692,
+                    "height": 1024
+                },
+                {
+                    "name": "medium",
+                    "width": 330,
+                    "height": 432
+                },
+                {
+                    "name": "small",
+                    "width": 185,
+                    "height": 242
                 }
             ]
         },
@@ -95,16 +110,19 @@
             "color": "#6f3d5e",
             "dimensions": [
                 {
-                    "width": "692px",
-                    "height": "1024px"
+                    "name": "fullLength",
+                    "width": 692,
+                    "height": 1024
                 },
                 {
-                    "width": "330px",
-                    "height": "432px"
+                    "name": "medium",
+                    "width": 330,
+                    "height": 432
                 },
                 {
-                    "width": "185px",
-                    "height": "242px"
+                    "name": "small",
+                    "width": 185,
+                    "height": 242
                 }
             ]
         }

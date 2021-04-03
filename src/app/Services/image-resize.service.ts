@@ -1,20 +1,25 @@
 import { Injectable } from "@angular/core";
 import { Game } from "../Model/Game";
 import { Games } from "../Model/Games";
+import { fabric } from "fabric";
+import { Canvas } from "fabric/fabric-impl";
+import { plainToClass } from "class-transformer";
 
 @Injectable()
 export class ImageResizeService {
     private _imageSource: File;
-    private _games: Game[];
+    private _games: Games;
 
     public selectedGame: Game;
+    public savableCanvas = new Array<[Canvas, string]>();
 
     public setGames(pojo: Games) {
-        this._games = pojo.games;
+        let games = plainToClass<Games, object>(Games, pojo);
+        this._games = games;
     }
 
     public get games(): Game[] {
-        return this._games;
+        return this._games.games;
     }
 
     public setImageSource(image: File, refreshCallback?) {
@@ -22,33 +27,34 @@ export class ImageResizeService {
         
         refreshCallback ? refreshCallback() : null;
 
-        let imageSource = document.getElementById('imageSource') as HTMLCanvasElement;
+        let imageSource = new fabric.Canvas('imageSource', { width: 50, height: 50 });
         this.previewImage(image, imageSource);
 
-        let fullLength = document.getElementById('fullLength') as HTMLCanvasElement;
-        this.previewImage(image, fullLength);
+        for (let dimension of this.selectedGame.dimensions) {
+            let canvas = new fabric.Canvas(`${dimension.name}`);
 
-        let medium = document.getElementById('medium') as HTMLCanvasElement;
-        this.previewImage(image, medium);
+            
+            this.savableCanvas.push([canvas, dimension.name]);
 
-        let small = document.getElementById('small') as HTMLCanvasElement;
-        this.previewImage(image, small);
+            this.previewImage(image, canvas);
+        }
     }
 
     public get imageSource(): File {
         return this._imageSource;
     }
 
-    private previewImage(event: File, canvas: HTMLCanvasElement) {
-        let context = canvas.getContext('2d');
+    private previewImage(event: File, canvas: Canvas) {
         var reader  = new FileReader();
         var img = new Image();
 
         img.onload = function() {
-            context.canvas.width = img.width;
-            context.canvas.height = img.height;
-            context.drawImage(img, 0, 0, img.width, img.height,
-                                   0, 0, canvas.clientWidth, canvas.clientHeight);
+            var image = new fabric.Image(img);
+            image.scaleToWidth(canvas.width - 100);
+            image.scaleToHeight(canvas.height - 100);
+            canvas.centerObject(image);
+            canvas.add(image);
+            canvas.renderAll();
         }
 
         reader.onloadend = function () {

@@ -8,10 +8,12 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { faChevronCircleDown, faImage, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { HttpClientModule } from '@angular/common/http'
 import { FetchDataService } from './Services/fetch-data.service';
+import { DimensionComponent } from './dimension.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DimensionComponent,
     DragDropUploadDirective
   ],
   imports: [

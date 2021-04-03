@@ -1,4 +1,5 @@
 export class Dimension {
-    public width: string;
-    public height: string;
+    public name: string;
+    public width: number;
+    public height: number;
 }

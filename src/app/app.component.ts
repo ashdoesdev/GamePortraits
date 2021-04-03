@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, HostListener } from '@angular/core';
+import * as JSZip from 'jszip';
 import { Dimension } from './Model/Dimension';
 import { Game } from './Model/Game';
 import { FetchDataService } from './Services/fetch-data.service';
@@ -66,11 +67,11 @@ export class AppComponent {
     return game.dimensions;
   }
 
-  public getWidth(dimension: Dimension): string {
+  public getWidth(dimension: Dimension): number {
     return dimension.width;
   }
 
-  public getHeight(dimension: Dimension): string {
+  public getHeight(dimension: Dimension): number {
     return dimension.height;
   }
 
@@ -96,5 +97,18 @@ export class AppComponent {
 
   public toggleSelect(): void {
     this.selectToggled = !this.selectToggled;
+  }
+
+  public async downloadImages(): Promise<void> {
+    var zip = new JSZip();
+
+    for (let canvas of this._imageResize.savableCanvas) {
+      var data = canvas[0].toDataURL();
+      zip.file(`${canvas[1]}.jpg`, data.substr(22), {base64: true});
+    }
+
+    zip.generateAsync({type:"base64"}).then(function (base64) {
+      location.href="data:application/zip;base64," + base64;
+    });
   }
 }

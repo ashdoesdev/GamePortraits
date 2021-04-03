@@ -34,11 +34,11 @@
 </section>
 <ng-container *ngIf="hasImageSource">
     <section id="section2">
-        <h2>Full Length</h2>
-        <canvas id="fullLength"></canvas>
-        <h2>Medium</h2>
-        <canvas id="medium"></canvas>
-        <h2>Small</h2>
-        <canvas id="small"></canvas>
+        <dimension *ngFor="let dimension of getDimensions(selectedGame)" [dimension]="dimension"></dimension>
+    </section>
+
+    <section id="section3">
+        <button (click)="downloadImages()">Download Images</button>
     </section>
 </ng-container>
+
