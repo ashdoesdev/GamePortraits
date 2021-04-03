@@ -1,0 +1,44 @@
+<section id="section1">
+    <h1><span>{{'{'}}</span><span class="title" [style]="'color:' + getColor(selectedGame)">{{selectedGameName || "Game"}}</span><span>{{'}'}}</span>Portraits</h1>
+
+    <button (click)="toggleSelect()">{{selectedGameName || "Choose Game..."}}</button>
+    <div *ngIf="selectToggled">
+        <div *ngFor="let game of games" 
+            [style]="'color:' + getColor(game)" 
+            (click)="setSelectedGame(game)">
+            {{getName(game)}}
+        </div>
+    </div>
+
+    <div>or</div>
+    
+    <div>Enter Custom Dimensions</div>
+
+    <div dragDropUpload (imageDropped)="setImage($event)" class="drag-drop-upload">
+        <fa-icon [icon]="['fas', 'image']" size="6x"></fa-icon>
+        <span><b>Click</b> or drag here to upload</span>
+    </div>
+
+    <ng-container *ngIf="hasImageSource">
+        <h3 class="kp-green">Success!</h3>
+        <div class="drag-drop-upload__preview">
+            <canvas id="imageSource"></canvas>
+            <span>{{filename}}</span>
+            <a (click)="removeImage()">
+                <fa-icon [icon]="['fas', 'times']" class="kp-red"></fa-icon>
+            </a>
+        </div>
+
+        <fa-icon *ngIf="shouldShowScrollArrow" [icon]="['fas', 'chevron-circle-down']" class="arrow-down kp-dark-grey fa-blink" size="3x"></fa-icon>
+    </ng-container>
+</section>
+<ng-container *ngIf="hasImageSource">
+    <section id="section2">
+        <h2>Full Length</h2>
+        <canvas id="fullLength"></canvas>
+        <h2>Medium</h2>
+        <canvas id="medium"></canvas>
+        <h2>Small</h2>
+        <canvas id="small"></canvas>
+    </section>
+</ng-container>

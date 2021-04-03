@@ -1,0 +1,98 @@
+
+@import '../styles.scss';
+
+section {
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap column;
+    align-items: center;
+    padding: 5vh;
+    font-family: 'Roboto', sans-serif;
+    background: $dark-grey;
+
+    h1 span {
+        color: $grey;
+    }
+}
+
+section#section1 {
+    min-height: 90vh;
+
+    .arrow-down {
+        position: absolute;
+        bottom: 40px;
+    }
+}
+
+section#section2 {
+    border-top: 4px solid $med-grey;
+}
+
+.dragged-over {
+    background: lighten($dark-grey, 10%);
+}
+
+canvas {
+    border: 1px solid $dark-grey;
+    margin: 2% auto;
+    max-width: 80%;
+    box-shadow: 0 15px 35px rgb(0 0 0 / 40%);
+}
+
+.drag-drop-upload {
+    width: 500px; 
+    height: 300px; 
+    border: 2px dashed darken($light-grey, 20%);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    flex-flow: wrap column;
+
+    span {
+        margin-top: 20px;
+    } 
+}
+
+.drag-drop-upload__preview {
+    padding: 10px;
+    width: 300px;
+    background: lighten($dark-grey, 10%);
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+        margin: 0 15px;
+        font-size: .8em;
+        flex: 1 auto;
+    }
+
+    a {
+        cursor: pointer;
+    }
+}
+
+canvas#imageSource {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    border: 0;
+    background: $dark-grey;
+    box-shadow: none;
+}
+
+canvas#fullLength {
+    width: 692px;
+    height: 1024px;
+}
+
+canvas#medium {
+    width: 330px;
+    height: 432px;
+}
+
+canvas#small {
+    width: 185px;
+    height: 242px;
+}

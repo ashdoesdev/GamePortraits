@@ -1,0 +1,61 @@
+@keyframes fa-blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+.fa-blink {
+  -webkit-animation: fa-blink .75s linear infinite;
+  -moz-animation: fa-blink .75s linear infinite;
+  -ms-animation: fa-blink .75s linear infinite;
+  -o-animation: fa-blink .75s linear infinite;
+  animation: fa-blink .75s linear infinite;
+}
+
+$dark-grey: #252525;
+$med-grey: #333;
+$grey: #666;
+$light-grey: #ccc;
+
+html,
+body#kingmakerPortraits {
+    margin: 0 !important;
+    color: $light-grey;
+}
+
+h1 {
+    color: $light-grey;
+    font-family: 'Roboto Slab', serif;
+    font-size: 3em;
+    text-shadow: 0 4px 4px rgb(0 0 0 / 60%);
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 2em;
+    text-shadow: 0 4px 4px rgb(0 0 0 / 20%);
+    letter-spacing: 2px;
+}
+
+h3 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5em;
+    text-shadow: 0 4px 4px rgb(0 0 0 / 20%);
+    letter-spacing: 2px;
+}
+
+.kp-green {
+    color: #5f7a59;
+}
+
+.kp-gold {
+    color: #dab64a;
+}
+
+.kp-dark-grey {
+    color: darken($dark-grey, 10%);
+}
+
+.kp-red {
+    color: #8d393d;
+}
