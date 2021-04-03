@@ -1,2 +1,2 @@
-# KingmakerPortraits
+# GamePortraits
 Create repo
