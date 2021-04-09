@@ -49,9 +49,26 @@ export class ImageResizeService {
         var img = new Image();
 
         img.onload = function() {
-            var image = new fabric.Image(img);
-            image.scaleToWidth(canvas.width - 100);
-            image.scaleToHeight(canvas.height - 100);
+            var canvasAspect = canvas.width / canvas.height;
+            var imgAspect = img.width / img.height;
+            var left, top, scaleFactor;
+    
+            if (canvasAspect >= imgAspect) {
+                scaleFactor = canvas.width / img.width;
+                left = 0;
+                top = -((img.height * scaleFactor) - canvas.height) / 2;
+            } else {
+                scaleFactor = canvas.height / img.height;
+                top = 0;
+                left = -((img.width * scaleFactor) - canvas.width) / 2;
+            }
+
+
+            var image = new fabric.Image(img, {
+                scaleX: scaleFactor,
+                scaleY: scaleFactor
+            });
+            canvas.controlsAboveOverlay = true
             canvas.centerObject(image);
             canvas.add(image);
             canvas.renderAll();

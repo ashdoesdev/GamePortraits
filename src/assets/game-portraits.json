@@ -2,7 +2,7 @@
     "games": [
         {
             "name": "Pathfinder: Kingmaker",
-            "color": "#355d38",
+            "extension": ".bmp",
             "dimensions": [
                 {
                     "name": "fullLength",
@@ -23,7 +23,8 @@
         },
         {
             "name": "Infinity Engine",
-            "color": "#77231b",
+            "subtitle": "Icewind Dale, Baldurs Gate, etc.",
+            "extension": ".bmp",
             "dimensions": [
                 {
                     "name": "fullLength",
@@ -44,7 +45,7 @@
         },
         {
             "name": "Infinity Engine Enhanced Edition",
-            "color": "#2b4d67",
+            "extension": ".bmp",
             "dimensions": [
                 {
                     "name": "fullLength",
@@ -65,7 +66,7 @@
         },
         {
             "name": "Neverwinter Nights",
-            "color": "#536f61",
+            "extension": ".bmp",
             "dimensions": [
                 {
                     "name": "fullLength",
@@ -86,7 +87,7 @@
         },
         {
             "name": "Temple of Elemental Evil",
-            "color": "#536f61",
+            "extension": ".bmp",
             "dimensions": [
                 {
                     "name": "fullLength",
@@ -107,7 +108,7 @@
         },
         {
             "name": "Pillars of Eternity",
-            "color": "#6f3d5e",
+            "extension": ".bmp",
             "dimensions": [
                 {
                     "name": "fullLength",

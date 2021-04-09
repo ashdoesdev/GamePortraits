@@ -10,9 +10,41 @@ section {
     font-family: 'Roboto', sans-serif;
     background: $dark-grey;
 
-    h1 span {
-        color: $grey;
+    h1 {
+        margin-top: 0;
+
+        span {
+            color: $grey;
+        }
     }
+}
+
+button#game-selector {
+    background: $light-grey;
+    border: 0;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+
+    &.selected-game {
+        background: transparent;
+        padding: 10px 15px;
+        background: #111;
+        @extend h2;
+    }
+}
+
+.game-selector--wrap {
+    position: relative;
+    width: 600px;
+    text-align: center;
+}
+
+.game-selector--dropdown {
+    width: 600px;
+    position: absolute;
 }
 
 section#section1 {
@@ -21,6 +53,10 @@ section#section1 {
     .arrow-down {
         position: absolute;
         bottom: 40px;
+    }
+
+    &.dropdown-open {
+        justify-content: flex-start;
     }
 }
 
@@ -33,9 +69,7 @@ section#section2 {
 }
 
 canvas {
-    border: 1px solid $dark-grey;
     margin: 2% auto;
-    max-width: 80%;
     box-shadow: 0 15px 35px rgb(0 0 0 / 40%);
 }
 
@@ -48,6 +82,16 @@ canvas {
     align-items: center;
     justify-content: center;   
     flex-flow: wrap column;
+
+    label {
+        cursor: pointer;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        flex-flow: wrap column;
+    }
 
     span {
         margin-top: 20px;

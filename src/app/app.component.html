@@ -1,24 +1,31 @@
-<section id="section1">
-    <h1><span>{{'{'}}</span><span class="title" [style]="'color:' + getColor(selectedGame)">{{selectedGameName || "Game"}}</span><span>{{'}'}}</span>Portraits</h1>
+<section id="section1" [ngClass]="{'dropdown-open' : selectToggled}">
+    <h1><span>Game</span>Portraits</h1>
 
-    <button (click)="toggleSelect()">{{selectedGameName || "Choose Game..."}}</button>
-    <div *ngIf="selectToggled">
-        <div *ngFor="let game of games" 
-            [style]="'color:' + getColor(game)" 
-            (click)="setSelectedGame(game)">
-            {{getName(game)}}
+    <div class="game-selector--wrap">
+        <button (click)="toggleSelect()"
+            id="game-selector"
+            [ngClass]="{'selected-game' : selectedGame}">{{selectedGameName || "Choose Game..."}}</button>
+        <div *ngIf="selectToggled" class="game-selector--dropdown">
+            <div *ngFor="let game of games" 
+                (click)="setSelectedGame(game)">
+                <h2>{{getName(game)}}</h2>
+                <small *ngIf="getSubtitle(game)">{{getSubtitle(game)}}</small>
+            </div>
         </div>
     </div>
-
-    <div>or</div>
     
-    <div>Enter Custom Dimensions</div>
+    <ng-container *ngIf="selectedGame">
+        <input type="file" id="upload" (change)="setImageFromEvent($event)" hidden/>
 
-    <div dragDropUpload (imageDropped)="setImage($event)" class="drag-drop-upload">
-        <fa-icon [icon]="['fas', 'image']" size="6x"></fa-icon>
-        <span><b>Click</b> or drag here to upload</span>
-    </div>
+        <div dragDropUpload (imageDropped)="setImage($event)" class="drag-drop-upload">
+            <label for="upload">
+                <fa-icon [icon]="['fas', 'image']" size="6x"></fa-icon>
 
+                <span><b>Click</b> or drag here to upload</span>
+            </label>
+        </div>
+    </ng-container>
+    
     <ng-container *ngIf="hasImageSource">
         <h3 class="kp-green">Success!</h3>
         <div class="drag-drop-upload__preview">

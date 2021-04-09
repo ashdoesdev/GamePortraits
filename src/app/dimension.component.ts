@@ -25,10 +25,10 @@ export class DimensionComponent {
   }
 
   public get width(): number {
-    return this.dimension.width + 100;
+    return this.dimension.width;
   }
 
   public get height(): number {
-    return this.dimension.height + 100;
+    return this.dimension.height;
   }
 }

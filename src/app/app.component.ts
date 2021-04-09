@@ -28,7 +28,6 @@ export class AppComponent {
     private _changeDetector: ChangeDetectorRef,
     private _fetchData: FetchDataService) {}
 
-
   ngOnInit() {
     this._fetchData.getGamePortraits().subscribe((res) => {
       this._imageResize.setGames(res);
@@ -59,6 +58,10 @@ export class AppComponent {
     return game.name;
   }
 
+  public getSubtitle(game: Game): string {
+    return game.subtitle;
+  }
+
   public getColor(game: Game): string {
     return game?.color || "#666";
   }
@@ -79,6 +82,20 @@ export class AppComponent {
     this._imageResize.selectedGame = game;
     if (this.selectToggled) {
       this.toggleSelect();
+    }
+  }
+
+  public setImageFromEvent(event) {
+    let files = event.target.files;
+      
+    if (files.length > 0) {
+      var validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+      if (validTypes.indexOf(files[0].type) === -1) {
+          alert("Invalid File Type");
+          return false;
+      }
+
+      this.setImage(files[0]);
     }
   }
 

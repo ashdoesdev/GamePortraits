@@ -3,6 +3,7 @@
     50% { opacity: 0.5; }
     100% { opacity: 0; }
 }
+
 .fa-blink {
   -webkit-animation: fa-blink .75s linear infinite;
   -moz-animation: fa-blink .75s linear infinite;
@@ -58,4 +59,9 @@ h3 {
 
 .kp-red {
     color: #8d393d;
+}
+
+
+.canvas-container {
+    border: 1px solid $grey;
 }
