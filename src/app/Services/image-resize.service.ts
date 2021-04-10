@@ -19,7 +19,7 @@ export class ImageResizeService {
     }
 
     public get games(): Game[] {
-        return this._games.games;
+        return this._games?.games;
     }
 
     public setImageSource(image: File, refreshCallback?) {

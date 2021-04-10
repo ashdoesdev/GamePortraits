@@ -9,12 +9,16 @@ import { faChevronCircleDown, faImage, faTimes } from '@fortawesome/free-solid-s
 import { HttpClientModule } from '@angular/common/http'
 import { FetchDataService } from './Services/fetch-data.service';
 import { DimensionComponent } from './dimension.component';
+import { GameSelectorComponent } from './game-selector.component';
+import { ImageUploadComponent } from './image-upload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DimensionComponent,
-    DragDropUploadDirective
+    DragDropUploadDirective,
+    ImageUploadComponent,
+    GameSelectorComponent
   ],
   imports: [
     BrowserModule,

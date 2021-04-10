@@ -1,5 +1,23 @@
-<section id="section1" [ngClass]="{'dropdown-open' : selectToggled}">
-    <h1><span>Game</span>Portraits</h1>
+<div class="upper-left">
+    <h1><span>Game</span>PortrAits</h1>
+    <game-selector></game-selector>
+</div>
+
+<div class="lower-left" *ngIf="selectedGame">
+    <image-upload (sendRefresh)="refresh()"></image-upload>
+</div>
+
+<div class="dimensions" *ngIf="hasImageSource">
+    <!-- <dimension *ngFor="let dimension of getDimensions(selectedGame)" [dimension]="dimension"></dimension> -->
+
+    <canvas id="canvas-main"></canvas>
+</div>
+
+<div class="lower-right" *ngIf="hasImageSource">
+    <button (click)="downloadImages()">Download Images</button>
+</div>
+
+<!-- <section id="section1" [ngClass]="{'dropdown-open' : selectToggled}">
 
     <div class="game-selector--wrap">
         <button (click)="toggleSelect()"
@@ -48,4 +66,4 @@
         <button (click)="downloadImages()">Download Images</button>
     </section>
 </ng-container>
-
+ -->

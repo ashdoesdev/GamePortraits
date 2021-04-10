@@ -5,9 +5,9 @@
             "extension": ".bmp",
             "dimensions": [
                 {
-                    "name": "fullLength",
-                    "width": 692,
-                    "height": 1024
+                    "name": "small",
+                    "width": 185,
+                    "height": 242
                 },
                 {
                     "name": "medium",
@@ -15,9 +15,9 @@
                     "height": 432
                 },
                 {
-                    "name": "small",
-                    "width": 185,
-                    "height": 242
+                    "name": "fullLength",
+                    "width": 692,
+                    "height": 1024
                 }
             ]
         },

@@ -1,0 +1,20 @@
+<ng-container *ngIf="hasImageSource">
+    <h3>Success!</h3>
+    <div class="drag-drop-upload__preview">
+        <canvas id="imageSource"></canvas>
+        <span>{{filename}}</span>
+        <a (click)="removeImage()">
+            <fa-icon [icon]="['fas', 'times']"></fa-icon>
+        </a>
+    </div>
+</ng-container>
+
+<input type="file" id="upload" (change)="setImageFromEvent($event)" hidden/>
+
+<div dragDropUpload (imageDropped)="setImage($event)" class="drag-drop-upload">
+    <label for="upload">
+        <fa-icon [icon]="['fas', 'image']" size="6x"></fa-icon>
+
+        <span><b>Click</b> or drag here to upload</span>
+    </label>
+</div>

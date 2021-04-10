@@ -1,0 +1,6 @@
+<div *ngFor="let game of games" 
+    (click)="setSelectedGame(game)"
+    [ngClass]="{'selected' : isSelected(game)}">
+    <h2>{{getName(game)}}</h2>
+    <small *ngIf="getSubtitle(game)">{{getSubtitle(game)}}</small>
+</div>
