@@ -119,9 +119,9 @@ export class AppComponent {
   public async downloadImages(): Promise<void> {
     var zip = new JSZip();
 
-    for (let canvas of this._imageResize.savableCanvas) {
-      var data = canvas[0].toDataURL();
-      zip.file(`${canvas[1]}.jpg`, data.substr(22), {base64: true});
+    for (let area of this._imageResize.saveableAreas) {
+      var data = this._imageResize.primaryCanvas.toDataURL({ format: 'jpeg', top: area.bounds.top, left: area.bounds.left, width: area.bounds.width, height: area.bounds.height });
+      zip.file(`${area.name}.jpg`, data.substr(22), {base64: true});
     }
 
     zip.generateAsync({type:"base64"}).then(function (base64) {

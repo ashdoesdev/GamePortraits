@@ -2,8 +2,9 @@ import { Injectable } from "@angular/core";
 import { Game } from "../Model/Game";
 import { Games } from "../Model/Games";
 import { fabric } from "fabric";
-import { Canvas } from "fabric/fabric-impl";
+import { Canvas, Rect } from "fabric/fabric-impl";
 import { plainToClass } from "class-transformer";
+import { SaveableArea } from "../Model/SaveableArea";
 
 @Injectable()
 export class ImageResizeService {
@@ -11,7 +12,8 @@ export class ImageResizeService {
     private _games: Games;
 
     public selectedGame: Game;
-    public savableCanvas = new Array<[Canvas, string]>();
+    public saveableAreas = new Array<SaveableArea>();
+    public primaryCanvas: Canvas;
 
     public setGames(pojo: Games) {
         let games = plainToClass<Games, object>(Games, pojo);
@@ -30,49 +32,68 @@ export class ImageResizeService {
         let imageSource = new fabric.Canvas('imageSource', { width: 50, height: 50 });
         this.previewImage(image, imageSource);
 
+        this.primaryCanvas = new fabric.Canvas('canvas-main', { width: 1000, height: 2200 });
+
+        let offset = 100;
+
         for (let dimension of this.selectedGame.dimensions) {
-            let canvas = new fabric.Canvas(`${dimension.name}`);
+            let clipPath = new fabric.Rect({ width: dimension.width, height: dimension.height, top: offset, left: 0, absolutePositioned: true });
 
-            
-            this.savableCanvas.push([canvas, dimension.name]);
+            this.previewImage(image, this.primaryCanvas, clipPath, offset, dimension.name);
 
-            this.previewImage(image, canvas);
+            offset += (dimension.height + 100);
         }
+
     }
 
     public get imageSource(): File {
         return this._imageSource;
     }
 
-    private previewImage(event: File, canvas: Canvas) {
+    private previewImage(event: File, canvas: Canvas, clipPath?, offset?, name?) {
         var reader  = new FileReader();
         var img = new Image();
 
-        img.onload = function() {
-            var canvasAspect = canvas.width / canvas.height;
+        img.onload = (function() {
+            let boundsWidth = clipPath ? clipPath.width : canvas.width;
+            let boundsHeight = clipPath ? clipPath.height : canvas.height;
+
+            var canvasAspect = boundsWidth / boundsHeight;
             var imgAspect = img.width / img.height;
             var left, top, scaleFactor;
     
             if (canvasAspect >= imgAspect) {
-                scaleFactor = canvas.width / img.width;
+                scaleFactor = boundsWidth / img.width;
                 left = 0;
-                top = -((img.height * scaleFactor) - canvas.height) / 2;
+                top = -((img.height * scaleFactor) - boundsHeight) / 2;
             } else {
-                scaleFactor = canvas.height / img.height;
+                scaleFactor = boundsHeight / img.height;
                 top = 0;
-                left = -((img.width * scaleFactor) - canvas.width) / 2;
+                left = -((img.width * scaleFactor) - boundsWidth) / 2;
             }
-
 
             var image = new fabric.Image(img, {
                 scaleX: scaleFactor,
                 scaleY: scaleFactor
             });
+
             canvas.controlsAboveOverlay = true
-            canvas.centerObject(image);
+
+            if (clipPath) {
+                image.clipPath = clipPath;
+                image.top = offset;
+                            
+                let area = new SaveableArea();
+                area.image = image;
+                area.bounds = clipPath;
+                area.name = name;
+
+                this.saveableAreas.push(area);
+            }
+
             canvas.add(image);
             canvas.renderAll();
-        }
+        }).bind(this);
 
         reader.onloadend = function () {
             img.src = reader.result as string;
