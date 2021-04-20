@@ -2,107 +2,148 @@
     "games": [
         {
             "name": "Pathfinder: Kingmaker",
-            "extension": ".bmp",
+            "extension": "png",
             "dimensions": [
                 {
-                    "name": "small",
+                    "name": "Small",
                     "width": 185,
                     "height": 242
                 },
                 {
-                    "name": "medium",
+                    "name": "Medium",
                     "width": 330,
                     "height": 432
                 },
                 {
-                    "name": "fullLength",
+                    "name": "Fulllength",
                     "width": 692,
                     "height": 1024
                 }
             ]
         },
         {
-            "name": "Infinity Engine",
-            "subtitle": "Icewind Dale, Baldurs Gate, etc.",
-            "extension": ".bmp",
+            "name": "BG, BG2, IWD",
+            "extension": "bmp",
             "dimensions": [
                 {
-                    "name": "fullLength",
-                    "width": 692,
-                    "height": 1024
+                    "name": "imgS",
+                    "width": 38,
+                    "height": 60,
+                    "colorDepth": 8
                 },
                 {
-                    "name": "medium",
-                    "width": 330,
-                    "height": 432
+                    "name": "imgM",
+                    "width": 110,
+                    "height": 170,
+                    "colorDepth": 24
                 },
                 {
-                    "name": "small",
-                    "width": 185,
-                    "height": 242
+                    "name": "imgL",
+                    "width": 210,
+                    "height": 330,
+                    "colorDepth": 24
                 }
             ]
         },
         {
-            "name": "Infinity Engine Enhanced Edition",
-            "extension": ".bmp",
+            "name": "IWD2",
+            "extension": "bmp",
             "dimensions": [
                 {
-                    "name": "fullLength",
-                    "width": 692,
-                    "height": 1024
+                    "name": "imgS",
+                    "width": 42,
+                    "height": 42
                 },
                 {
-                    "name": "medium",
-                    "width": 330,
-                    "height": 432
+                    "name": "imgL",
+                    "width": 210,
+                    "height": 330
+                }
+            ]
+        },
+        {
+            "name": "BG:EE, BG2:EE, IWD:EE",
+            "extension": "bmp",
+            "dimensions": [
+                {
+                    "name": "imgS",
+                    "width": 54,
+                    "height": 84,
+                    "colorDepth": 24
                 },
                 {
-                    "name": "small",
-                    "width": 185,
-                    "height": 242
+                    "name": "imgM",
+                    "width": 169,
+                    "height": 266,
+                    "colorDepth": 24
+                },
+                {
+                    "name": "imgL",
+                    "width": 210,
+                    "height": 330,
+                    "colorDepth": 24
                 }
             ]
         },
         {
             "name": "Neverwinter Nights",
-            "extension": ".bmp",
+            "extension": "tga",
             "dimensions": [
                 {
                     "name": "fullLength",
                     "width": 692,
-                    "height": 1024
+                    "height": 1024,
+                    "colorDepth": 24
                 },
                 {
                     "name": "medium",
                     "width": 330,
-                    "height": 432
+                    "height": 432,
+                    "colorDepth": 24
                 },
                 {
                     "name": "small",
                     "width": 185,
-                    "height": 242
+                    "height": 242,
+                    "colorDepth": 24
                 }
             ]
         },
         {
             "name": "Temple of Elemental Evil",
-            "extension": ".bmp",
+            "extension": "tga",
             "dimensions": [
                 {
-                    "name": "fullLength",
-                    "width": 692,
-                    "height": 1024
+                    "name": "CUSTOM_PORTRAIT_0012_S",
+                    "width": 53,
+                    "height": 47,
+                    "colorDepth": 32
                 },
                 {
-                    "name": "medium",
-                    "width": 330,
-                    "height": 432
+                    "name": "CUSTOM_PORTRAIT_0013_S_GREY",
+                    "width": 53,
+                    "height": 47,
+                    "greyscale": true,
+                    "colorDepth": 32
                 },
                 {
-                    "name": "small",
+                    "name": "CUSTOM_PORTRAIT_0011_M",
                     "width": 185,
-                    "height": 242
+                    "height": 242,
+                    "colorDepth": 32
+                },
+                {
+                    "name": "CUSTOM_PORTRAIT_0014_M_GREY",
+                    "width": 185,
+                    "height": 242,
+                    "greyscale": true,
+                    "colorDepth": 32
+                },
+                {
+                    "name": "CUSTOM_PORTRAIT_0010_B",
+                    "width": 130,
+                    "height": 150,
+                    "colorDepth": 32
                 }
             ]
         },

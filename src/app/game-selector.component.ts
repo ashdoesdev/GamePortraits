@@ -3,7 +3,7 @@ import * as JSZip from 'jszip';
 import { Dimension } from './Model/Dimension';
 import { Game } from './Model/Game';
 import { FetchDataService } from './Services/fetch-data.service';
-import { ImageResizeService } from './Services/image-resize.service';
+import { CanvasService } from './Services/canvas.service';
 
 @Component({
   selector: 'game-selector',
@@ -13,7 +13,7 @@ import { ImageResizeService } from './Services/image-resize.service';
 export class GameSelectorComponent {
  
   constructor(
-    private _imageResize: ImageResizeService,
+    private _imageResize: CanvasService,
     private _changeDetector: ChangeDetectorRef,
     private _fetchData: FetchDataService) {}
 

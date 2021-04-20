@@ -2,18 +2,18 @@ import { Injectable } from "@angular/core";
 import { Game } from "../Model/Game";
 import { Games } from "../Model/Games";
 import { fabric } from "fabric";
-import { Canvas, Rect } from "fabric/fabric-impl";
+import { Canvas } from "fabric/fabric-impl";
 import { plainToClass } from "class-transformer";
 import { SaveableArea } from "../Model/SaveableArea";
 
 @Injectable()
-export class ImageResizeService {
-    private _imageSource: File;
+export class CanvasService {
     private _games: Games;
 
     public selectedGame: Game;
-    public saveableAreas = new Array<SaveableArea>();
+    public imageSource: File;
     public primaryCanvas: Canvas;
+    public saveableAreas = new Array<SaveableArea>();
 
     public setGames(pojo: Games) {
         let games = plainToClass<Games, object>(Games, pojo);
@@ -25,11 +25,12 @@ export class ImageResizeService {
     }
 
     public setImageSource(image: File, refreshCallback?) {
-        this._imageSource = image;   
+        this.imageSource = image;   
         
         refreshCallback ? refreshCallback() : null;
 
         let imageSource = new fabric.Canvas('imageSource', { width: 50, height: 50 });
+
         this.previewImage(image, imageSource);
 
         this.primaryCanvas = new fabric.Canvas('canvas-main', { width: 1000, height: 2200 });
@@ -44,10 +45,7 @@ export class ImageResizeService {
             offset += (dimension.height + 100);
         }
 
-    }
-
-    public get imageSource(): File {
-        return this._imageSource;
+        refreshCallback ? refreshCallback() : null;
     }
 
     private previewImage(event: File, canvas: Canvas, clipPath?, offset?, name?) {
@@ -84,7 +82,6 @@ export class ImageResizeService {
                 image.top = offset;
                             
                 let area = new SaveableArea();
-                area.image = image;
                 area.bounds = clipPath;
                 area.name = name;
 
@@ -99,6 +96,6 @@ export class ImageResizeService {
             img.src = reader.result as string;
         }
         
-        reader.readAsDataURL(event);
+        event ? reader.readAsDataURL(event) : null;
     }
 }

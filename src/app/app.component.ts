@@ -3,7 +3,7 @@ import * as JSZip from 'jszip';
 import { Dimension } from './Model/Dimension';
 import { Game } from './Model/Game';
 import { FetchDataService } from './Services/fetch-data.service';
-import { ImageResizeService } from './Services/image-resize.service';
+import { CanvasService } from './Services/canvas.service';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +24,7 @@ export class AppComponent {
   }
   
   constructor(
-    private _imageResize: ImageResizeService,
+    private _imageResize: CanvasService,
     private _changeDetector: ChangeDetectorRef,
     private _fetchData: FetchDataService) {}
 
@@ -80,9 +80,8 @@ export class AppComponent {
 
   public setSelectedGame(game: Game): void {
     this._imageResize.selectedGame = game;
-    if (this.selectToggled) {
-      this.toggleSelect();
-    }
+    this._imageResize.primaryCanvas = null;
+    this._imageResize.setImageSource(this._imageResize.imageSource, this.refresh.bind(this));
   }
 
   public setImageFromEvent(event) {

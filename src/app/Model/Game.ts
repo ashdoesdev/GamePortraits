@@ -6,6 +6,7 @@ export class Game {
     public subtitle: string;
     public color: string;
     public extension: string;
+    
     @Type(() => Dimension)
     public dimensions: Dimension[];
 }

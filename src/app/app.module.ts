@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DragDropUploadDirective } from './Directives/drag-drop-upload.directive';
-import { ImageResizeService } from './Services/image-resize.service';
+import { CanvasService } from './Services/canvas.service';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faChevronCircleDown, faImage, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { HttpClientModule } from '@angular/common/http'
@@ -26,7 +26,7 @@ import { ImageUploadComponent } from './image-upload.component';
     HttpClientModule
   ],
   providers: [
-    ImageResizeService,
+    CanvasService,
     FetchDataService
   ],
   bootstrap: [AppComponent]
