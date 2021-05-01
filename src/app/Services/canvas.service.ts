@@ -25,41 +25,53 @@ export class CanvasService {
     }
 
     public setImageSource(image: File, refreshCallback?) {
-        this.imageSource = image;   
-        
+        this.imageSource = image;
+
         refreshCallback ? refreshCallback() : null;
 
         let imageSource = new fabric.Canvas('imageSource', { width: 50, height: 50 });
 
         this.previewImage(image, imageSource);
 
-        this.primaryCanvas = new fabric.Canvas('canvas-main', { width: 1000, height: 2200 });
+        let minCanvasHeight = 0;
+
+        for (let dimension of this.selectedGame.dimensions) {
+            minCanvasHeight += dimension.height + 100;
+        }
+
+        minCanvasHeight += 200;
+
+        this.primaryCanvas = new fabric.Canvas('canvas-main', { width: window.innerWidth, height: minCanvasHeight });
 
         let offset = 100;
 
         for (let dimension of this.selectedGame.dimensions) {
-            let clipPath = new fabric.Rect({ width: dimension.width, height: dimension.height, top: offset, left: 0, absolutePositioned: true });
+            let clipPath = new fabric.Rect({ width: dimension.width, height: dimension.height, top: offset, left: (window.innerWidth - dimension.width - 100), absolutePositioned: true });
 
             this.previewImage(image, this.primaryCanvas, clipPath, offset, dimension.name);
 
             offset += (dimension.height + 100);
+            
+            this.primaryCanvas.add(clipPath.set({backgroundColor: "#d3d3d3", fill: "#252525", selectable: false}));
         }
+
+        this.primaryCanvas.controlsAboveOverlay = true
 
         refreshCallback ? refreshCallback() : null;
     }
 
     private previewImage(event: File, canvas: Canvas, clipPath?, offset?, name?) {
-        var reader  = new FileReader();
+        var reader = new FileReader();
         var img = new Image();
 
-        img.onload = (function() {
+        img.onload = (function () {
             let boundsWidth = clipPath ? clipPath.width : canvas.width;
             let boundsHeight = clipPath ? clipPath.height : canvas.height;
 
             var canvasAspect = boundsWidth / boundsHeight;
             var imgAspect = img.width / img.height;
             var left, top, scaleFactor;
-    
+
             if (canvasAspect >= imgAspect) {
                 scaleFactor = boundsWidth / img.width;
                 left = 0;
@@ -80,7 +92,8 @@ export class CanvasService {
             if (clipPath) {
                 image.clipPath = clipPath;
                 image.top = offset;
-                            
+                image.left = clipPath.left;
+
                 let area = new SaveableArea();
                 area.bounds = clipPath;
                 area.name = name;
@@ -95,7 +108,7 @@ export class CanvasService {
         reader.onloadend = function () {
             img.src = reader.result as string;
         }
-        
+
         event ? reader.readAsDataURL(event) : null;
     }
 }

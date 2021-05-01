@@ -8,6 +8,8 @@ body {
     color: $light-grey;
     background: $dark-grey;
     font-family: 'Lora', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -139,11 +141,11 @@ image-upload {
     }
 }
 
-.dimensions {
-    position: absolute;
-    width: 60%;
-    right: 0;
-}
+// .dimensions {
+//     position: absolute;
+//     width: 60%;
+//     right: 0;
+// }
 
 dimension {
     canvas {
