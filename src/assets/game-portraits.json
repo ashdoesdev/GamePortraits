@@ -86,6 +86,27 @@
             ]
         },
         {
+            "name": "Pillars of Eternity",
+            "extension": ".bmp",
+            "dimensions": [
+                {
+                    "name": "small",
+                    "width": 185,
+                    "height": 242
+                },
+                {
+                    "name": "medium",
+                    "width": 330,
+                    "height": 432
+                },
+                {
+                    "name": "fullLength",
+                    "width": 692,
+                    "height": 1024
+                }
+            ]
+        },
+        {
             "name": "Neverwinter Nights",
             "extension": "tga",
             "disabled": true,
@@ -107,27 +128,6 @@
                     "width": 692,
                     "height": 1024,
                     "colorDepth": 24
-                }
-            ]
-        },
-        {
-            "name": "Pillars of Eternity",
-            "extension": ".bmp",
-            "dimensions": [
-                {
-                    "name": "small",
-                    "width": 185,
-                    "height": 242
-                },
-                {
-                    "name": "medium",
-                    "width": 330,
-                    "height": 432
-                },
-                {
-                    "name": "fullLength",
-                    "width": 692,
-                    "height": 1024
                 }
             ]
         }

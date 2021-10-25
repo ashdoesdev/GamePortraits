@@ -6,6 +6,7 @@ import { FetchDataService } from './Services/fetch-data.service';
 import { CanvasService } from './Services/canvas.service';
 import { Subscription } from 'rxjs';
 import { SharedObservablesService } from './Services/shared-observables.service';
+declare var $: any;
 
 @Component({
   selector: 'app-root',
@@ -13,18 +14,8 @@ import { SharedObservablesService } from './Services/shared-observables.service'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public shouldShowScrollArrow = true;
   public selectToggled = false;
   public refreshSubscription: Subscription;
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-      const scrollOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      
-      if (this.shouldShowScrollArrow) {
-        this.shouldShowScrollArrow = scrollOffset <= 100;
-      }
-  }
   
   constructor(
     private _imageResize: CanvasService,
@@ -70,6 +61,10 @@ export class AppComponent {
     return this._imageResize.selectedGame;
   }
 
+  public get shouldShowScrollIndicator(): boolean {
+    return document.body.scrollHeight > window.outerHeight && window.scrollY < 100;
+  }
+
   public getName(game: Game): string {
     return game.name;
   }
@@ -111,7 +106,6 @@ export class AppComponent {
   }
 
   public setImage(event: File): void {
-    this.shouldShowScrollArrow = true;
     this._imageResize.setImageSource(event, this.refresh.bind(this));
   }
 

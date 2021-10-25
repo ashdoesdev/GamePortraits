@@ -1,0 +1,22 @@
+.scroll-indicator {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+}
+
+@keyframes fa-blink {
+    0% { opacity: 1; }
+    25% { opacity: 0.75; }
+    50% { opacity: 0.5; }
+    75% { opacity: 0.25; }
+    100% { opacity: 0.75; }
+}
+
+.fa-blink {
+  -webkit-animation: fa-blink 1s linear infinite;
+  -moz-animation: fa-blink 1s linear infinite;
+  -ms-animation: fa-blink 1s linear infinite;
+  -o-animation: fa-blink 1s linear infinite;
+  animation: fa-blink 1s linear infinite;
+}

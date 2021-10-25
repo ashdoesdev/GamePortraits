@@ -2,6 +2,7 @@ $dark-grey: #252525;
 $med-grey: #333;
 $grey: #666;
 $light-grey: #ccc;
+$gold: #684315;
 
 html,
 body {
@@ -37,8 +38,8 @@ h3 {
 .upper-left {
     z-index: 10;
     position: fixed;
-    left: 2%;
-    top: 4%;
+    left: 30px;
+    top: 30px;
 
     h1 {
         margin: 0 0 20px 0;
@@ -48,6 +49,16 @@ h3 {
             color: $grey;
         }
     }
+}
+
+button {
+    border: 0;
+    color: #fff;
+    background: $gold;
+    padding: 10px 20px;
+    font-size: 22px;
+    font-family: "Cinzel Decorative", cursive;
+    box-shadow: 0 -1px 4px rgb(0 0 0 / 60%);
 }
 
 game-selector {
@@ -74,15 +85,15 @@ game-selector {
 .lower-left {
     z-index: 10;
     position: fixed;
-    left: 2%;
-    bottom: 4%;
+    left: 30px;
+    bottom: 30px;
 }
 
 .lower-right {
     z-index: 10;
     position: fixed;
-    right: 2%;
-    bottom: 4%;
+    right: 30px;
+    bottom: 30px;
 }
 
 image-upload {
