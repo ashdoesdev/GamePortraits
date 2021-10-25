@@ -2,5 +2,5 @@
     (click)="setSelectedGame(game)"
     [ngClass]="{'selected' : isSelected(game)}">
     <h2>{{getName(game)}}</h2>
-    <small *ngIf="getSubtitle(game)">{{getSubtitle(game)}}</small>
+    <small *ngIf="isDisabled(game)">Coming Soon</small>
 </div>

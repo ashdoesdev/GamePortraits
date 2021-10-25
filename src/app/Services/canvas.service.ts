@@ -25,8 +25,9 @@ export class CanvasService {
     }
 
     public setImageSource(image: File, refreshCallback?) {
+        this.saveableAreas = new Array<SaveableArea>();
         this.imageSource = image;
-
+        
         refreshCallback ? refreshCallback() : null;
 
         let imageSource = new fabric.Canvas('imageSource', { width: 50, height: 50 });

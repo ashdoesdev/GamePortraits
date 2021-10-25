@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Game } from './Model/Game';
 import { CanvasService } from './Services/canvas.service';
+import { SharedObservablesService } from './Services/shared-observables.service';
 
 @Component({
   selector: 'game-selector',
@@ -8,9 +9,9 @@ import { CanvasService } from './Services/canvas.service';
   styleUrls: ['./game-selector.component.scss']
 })
 export class GameSelectorComponent {
-  @Output() sendRefresh = new EventEmitter<any>();
-
-  constructor(private _imageResize: CanvasService) {}
+  constructor(
+    private _imageResize: CanvasService,
+    private _sharedObservables: SharedObservablesService) {}
 
   public get selectedGameName(): string {
     return this._imageResize.selectedGame?.name;
@@ -36,17 +37,18 @@ export class GameSelectorComponent {
     return game.name;
   }
 
-  public getSubtitle(game: Game): string {
-    return game.subtitle;
+  public isDisabled(game: Game): boolean {
+    return game.disabled;
   }
 
   public setSelectedGame(game: Game): void {
+    this._sharedObservables.setImageInput('');
     this._imageResize.selectedGame = game;
     this._imageResize.setImageSource(null, this.refresh.bind(this));
   }
 
   public refresh(): void {
-    this.sendRefresh.emit();
+    this._sharedObservables.sendRefresh(true);
   }
 
   public isSelected(game: Game): boolean {

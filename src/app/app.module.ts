@@ -10,6 +10,7 @@ import { FetchDataService } from './Services/fetch-data.service';
 import { DimensionComponent } from './dimension.component';
 import { GameSelectorComponent } from './game-selector.component';
 import { ImageUploadComponent } from './image-upload.component';
+import { SharedObservablesService } from './Services/shared-observables.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ImageUploadComponent } from './image-upload.component';
   ],
   providers: [
     CanvasService,
-    FetchDataService
+    FetchDataService,
+    SharedObservablesService
   ],
   bootstrap: [AppComponent]
 })

@@ -4,7 +4,8 @@ import { Dimension } from './Model/Dimension';
 import { Game } from './Model/Game';
 import { FetchDataService } from './Services/fetch-data.service';
 import { CanvasService } from './Services/canvas.service';
-declare var $;
+import { Subscription } from 'rxjs';
+import { SharedObservablesService } from './Services/shared-observables.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ declare var $;
 export class AppComponent {
   public shouldShowScrollArrow = true;
   public selectToggled = false;
+  public refreshSubscription: Subscription;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -27,12 +29,25 @@ export class AppComponent {
   constructor(
     private _imageResize: CanvasService,
     private _changeDetector: ChangeDetectorRef,
-    private _fetchData: FetchDataService) {}
+    private _fetchData: FetchDataService,
+    private _sharedObservables: SharedObservablesService) {}
 
   ngOnInit() {
     this._fetchData.getGamePortraits().subscribe((res) => {
       this._imageResize.setGames(res);
     })
+
+    this.refreshSubscription = this._sharedObservables.sendRefreshObservable$.subscribe((res) => {
+      if (res) {
+        this.refresh();
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
+    }
   }
 
   public get selectedGameName(): string {
@@ -57,10 +72,6 @@ export class AppComponent {
 
   public getName(game: Game): string {
     return game.name;
-  }
-
-  public getSubtitle(game: Game): string {
-    return game.subtitle;
   }
 
   public getColor(game: Game): string {

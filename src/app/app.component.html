@@ -1,16 +1,18 @@
 <div class="upper-left">
     <h1><span>Game</span>PortrAits</h1>
-    <game-selector (sendRefresh)="refresh()"></game-selector>
+    <game-selector></game-selector>
 </div>
 
 <div class="lower-left" *ngIf="selectedGame">
-    <image-upload (sendRefresh)="refresh()"></image-upload>
+    <image-upload></image-upload>
 </div>
 
-<div class="dimensions" *ngIf="hasImageSource">
+<ng-container *ngIf="hasImageSource">
+<div class="dimensions">
     <canvas id="canvas-main"></canvas>
 </div>
 
-<div class="lower-right" *ngIf="hasImageSource">
+<div class="lower-right">
     <button (click)="downloadImages()">Download Images</button>
 </div>
+</ng-container>

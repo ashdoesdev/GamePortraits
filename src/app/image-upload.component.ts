@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
-import { FetchDataService } from './Services/fetch-data.service';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CanvasService } from './Services/canvas.service';
+import { SharedObservablesService } from './Services/shared-observables.service';
 
 @Component({
   selector: 'image-upload',
@@ -8,10 +9,25 @@ import { CanvasService } from './Services/canvas.service';
   styleUrls: ['./image-upload.component.scss']
 })
 export class ImageUploadComponent {
-  @Output() sendRefresh = new EventEmitter<any>();
   @ViewChild('imageUpload') input: ElementRef; 
 
-  constructor(private _imageResize: CanvasService) {}
+  public inputSubscription: Subscription;
+
+  constructor(
+    private _imageResize: CanvasService,
+    private _sharedObservables: SharedObservablesService) {}
+
+  ngOnInit() {
+    this.inputSubscription = this._sharedObservables.setImageInputObservable$.subscribe((res) => {
+      this.setInputValue(res);
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.inputSubscription) {
+      this.inputSubscription.unsubscribe();
+    }
+  }
 
   public get hasImageSource(): boolean {
     return this._imageResize.imageSource != null;
@@ -40,11 +56,17 @@ export class ImageUploadComponent {
   }
 
   public refresh(): void {
-    this.sendRefresh.emit();
+    this._sharedObservables.sendRefresh(true);
   }
 
   public removeImage(): void {
-    this.input.nativeElement.value = '';
+    this.setInputValue('');
     this._imageResize.setImageSource(null, this.refresh.bind(this));
+  }
+
+  public setInputValue(value: string): void {
+    if (this.input) {
+      this.input.nativeElement.value = value;
+    }
   }
 }
