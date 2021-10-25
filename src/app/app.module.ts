@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { DragDropUploadDirective } from './Directives/drag-drop-upload.directive';
 import { CanvasService } from './Services/canvas.service';

@@ -5,7 +5,8 @@ import { Games } from "../Model/Games";
 
 @Injectable()
 export class FetchDataService {
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient) {}
+    
     public getGamePortraits(): Observable<Games> {
         return this.http.get<Games>('assets/game-portraits.json');
     } 

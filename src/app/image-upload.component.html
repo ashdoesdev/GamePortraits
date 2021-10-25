@@ -9,7 +9,7 @@
     </div>
 </ng-container>
 
-<input type="file" id="upload" (change)="setImageFromEvent($event)" hidden/>
+<input type="file" id="upload" (change)="setImageFromEvent($event)" hidden #imageUpload/>
 
 <div dragDropUpload (imageDropped)="setImage($event)" class="drag-drop-upload">
     <label for="upload">

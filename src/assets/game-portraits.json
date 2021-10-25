@@ -110,44 +110,6 @@
             ]
         },
         {
-            "name": "Temple of Elemental Evil",
-            "extension": "tga",
-            "dimensions": [
-                {
-                    "name": "CUSTOM_PORTRAIT_0012_S",
-                    "width": 53,
-                    "height": 47,
-                    "colorDepth": 32
-                },
-                {
-                    "name": "CUSTOM_PORTRAIT_0013_S_GREY",
-                    "width": 53,
-                    "height": 47,
-                    "greyscale": true,
-                    "colorDepth": 32
-                },
-                {
-                    "name": "CUSTOM_PORTRAIT_0011_M",
-                    "width": 185,
-                    "height": 242,
-                    "colorDepth": 32
-                },
-                {
-                    "name": "CUSTOM_PORTRAIT_0014_M_GREY",
-                    "width": 185,
-                    "height": 242,
-                    "greyscale": true,
-                    "colorDepth": 32
-                },
-                {
-                    "name": "CUSTOM_PORTRAIT_0010_B",
-                    "width": 130,
-                    "height": 150,
-                    "colorDepth": 32
-                }
-            ]
-        },
-        {
             "name": "Pillars of Eternity",
             "extension": ".bmp",
             "dimensions": [

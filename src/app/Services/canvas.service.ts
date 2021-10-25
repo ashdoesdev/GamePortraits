@@ -105,7 +105,7 @@ export class CanvasService {
             canvas.renderAll();
         }).bind(this);
 
-        reader.onloadend = function () {
+        reader.onloadend = function (event) {
             img.src = reader.result as string;
         }
 

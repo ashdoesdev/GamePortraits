@@ -1,6 +1,6 @@
 <div class="upper-left">
     <h1><span>Game</span>PortrAits</h1>
-    <game-selector></game-selector>
+    <game-selector (sendRefresh)="refresh()"></game-selector>
 </div>
 
 <div class="lower-left" *ngIf="selectedGame">
@@ -8,62 +8,9 @@
 </div>
 
 <div class="dimensions" *ngIf="hasImageSource">
-    <!-- <dimension *ngFor="let dimension of getDimensions(selectedGame)" [dimension]="dimension"></dimension> -->
-
     <canvas id="canvas-main"></canvas>
 </div>
 
 <div class="lower-right" *ngIf="hasImageSource">
     <button (click)="downloadImages()">Download Images</button>
 </div>
-
-<!-- <section id="section1" [ngClass]="{'dropdown-open' : selectToggled}">
-
-    <div class="game-selector--wrap">
-        <button (click)="toggleSelect()"
-            id="game-selector"
-            [ngClass]="{'selected-game' : selectedGame}">{{selectedGameName || "Choose Game..."}}</button>
-        <div *ngIf="selectToggled" class="game-selector--dropdown">
-            <div *ngFor="let game of games" 
-                (click)="setSelectedGame(game)">
-                <h2>{{getName(game)}}</h2>
-                <small *ngIf="getSubtitle(game)">{{getSubtitle(game)}}</small>
-            </div>
-        </div>
-    </div>
-    
-    <ng-container *ngIf="selectedGame">
-        <input type="file" id="upload" (change)="setImageFromEvent($event)" hidden/>
-
-        <div dragDropUpload (imageDropped)="setImage($event)" class="drag-drop-upload">
-            <label for="upload">
-                <fa-icon [icon]="['fas', 'image']" size="6x"></fa-icon>
-
-                <span><b>Click</b> or drag here to upload</span>
-            </label>
-        </div>
-    </ng-container>
-    
-    <ng-container *ngIf="hasImageSource">
-        <h3 class="kp-green">Success!</h3>
-        <div class="drag-drop-upload__preview">
-            <canvas id="imageSource"></canvas>
-            <span>{{filename}}</span>
-            <a (click)="removeImage()">
-                <fa-icon [icon]="['fas', 'times']" class="kp-red"></fa-icon>
-            </a>
-        </div>
-
-        <fa-icon *ngIf="shouldShowScrollArrow" [icon]="['fas', 'chevron-circle-down']" class="arrow-down kp-dark-grey fa-blink" size="3x"></fa-icon>
-    </ng-container>
-</section>
-<ng-container *ngIf="hasImageSource">
-    <section id="section2">
-        <dimension *ngFor="let dimension of getDimensions(selectedGame)" [dimension]="dimension"></dimension>
-    </section>
-
-    <section id="section3">
-        <button (click)="downloadImages()">Download Images</button>
-    </section>
-</ng-container>
- -->

@@ -4,6 +4,7 @@ import { Dimension } from './Model/Dimension';
 import { Game } from './Model/Game';
 import { FetchDataService } from './Services/fetch-data.service';
 import { CanvasService } from './Services/canvas.service';
+declare var $;
 
 @Component({
   selector: 'app-root',
@@ -105,10 +106,6 @@ export class AppComponent {
 
   public refresh(): void {
     this._changeDetector.detectChanges();
-  }
-
-  public removeImage(): void {
-    this._imageResize.setImageSource(null, this.refresh.bind(this));
   }
 
   public toggleSelect(): void {

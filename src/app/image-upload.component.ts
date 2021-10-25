@@ -1,7 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, HostListener, Output } from '@angular/core';
-import * as JSZip from 'jszip';
-import { Dimension } from './Model/Dimension';
-import { Game } from './Model/Game';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
 import { FetchDataService } from './Services/fetch-data.service';
 import { CanvasService } from './Services/canvas.service';
 
@@ -12,11 +9,9 @@ import { CanvasService } from './Services/canvas.service';
 })
 export class ImageUploadComponent {
   @Output() sendRefresh = new EventEmitter<any>();
-  
-  constructor(
-    private _imageResize: CanvasService,
-    private _changeDetector: ChangeDetectorRef,
-    private _fetchData: FetchDataService) {}
+  @ViewChild('imageUpload') input: ElementRef; 
+
+  constructor(private _imageResize: CanvasService) {}
 
   public get hasImageSource(): boolean {
     return this._imageResize.imageSource != null;
@@ -49,6 +44,7 @@ export class ImageUploadComponent {
   }
 
   public removeImage(): void {
+    this.input.nativeElement.value = '';
     this._imageResize.setImageSource(null, this.refresh.bind(this));
   }
 }
