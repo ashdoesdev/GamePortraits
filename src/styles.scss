@@ -1,8 +1,4 @@
-$dark-grey: #252525;
-$med-grey: #333;
-$grey: #666;
-$light-grey: #ccc;
-$gold: #684315;
+@import './partials/variables';
 
 html,
 body {
@@ -11,6 +7,11 @@ body {
     font-family: 'Lora', sans-serif;
     margin: 0;
     overflow-x: hidden;
+}
+
+input,
+input::placeholder {
+    font-family: 'Lora', sans-serif;
 }
 
 h1 {
@@ -33,121 +34,5 @@ h3 {
     font-size: 1.5em;
     text-shadow: 0 4px 4px rgb(0 0 0 / 20%);
     letter-spacing: 2px;
-}
-
-.upper-left {
-    z-index: 10;
-    position: fixed;
-    left: 30px;
-    top: 30px;
-
-    h1 {
-        margin: 0 0 20px 0;
-        font-size: 40px;
-
-        span {
-            color: $grey;
-        }
-    }
-}
-
-button {
-    border: 0;
-    color: #fff;
-    background: $gold;
-    padding: 10px 20px;
-    font-size: 22px;
-    font-family: "Cinzel Decorative", cursive;
-    box-shadow: 0 -1px 4px rgb(0 0 0 / 60%);
-}
-
-game-selector {
-    div {
-        cursor: pointer;
-        margin: 10px 0;
-        color: $grey;
-        
-        &:hover {
-            color: $light-grey;
-        }
-
-        &.selected {
-            color: $light-grey;
-        }
-    }
-
-    h2 {
-        margin: 0;
-        font-size: 16px;
-    }
-}
-
-.lower-left {
-    z-index: 10;
-    position: fixed;
-    left: 30px;
-    bottom: 30px;
-}
-
-.lower-right {
-    z-index: 10;
-    position: fixed;
-    right: 30px;
-    bottom: 30px;
-}
-
-image-upload {
-    .drag-drop-upload {
-        width: 275px; 
-        height: 275px; 
-        border: 2px dashed darken($light-grey, 20%);
-        display: flex;
-        align-items: center;
-        justify-content: center;   
-        flex-flow: wrap column;
-
-        label {
-            cursor: pointer;
-            display: flex;
-            height: 100%;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-            flex-flow: wrap column;
-        }
-
-        span {
-            margin-top: 20px;
-        } 
-    }
-
-    .drag-drop-upload__preview {
-        padding: 10px;
-        width: 255px;
-        background: lighten($dark-grey, 10%);
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 30px;
-
-        span {
-            margin: 0 15px;
-            font-size: .8em;
-            flex: 1 auto;
-            overflow-wrap: anywhere;
-        }
-
-        a {
-            cursor: pointer;
-        }               
-    }
-
-    canvas#imageSource {
-        width: 50px;
-        height: 50px;
-        margin: 0;
-        border: 0;
-        background: $dark-grey;
-        box-shadow: none;
-    }
+    margin: 5px 0;
 }

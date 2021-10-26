@@ -1,6 +1,6 @@
 <div *ngFor="let game of games" 
     (click)="setSelectedGame(game)"
-    [ngClass]="{'selected' : isSelected(game)}">
+    [ngClass]="{'selected' : isSelected(game), 'disabled' : isDisabled(game)}">
     <h2>{{getName(game)}}</h2>
     <small *ngIf="isDisabled(game)">Coming Soon</small>
 </div>

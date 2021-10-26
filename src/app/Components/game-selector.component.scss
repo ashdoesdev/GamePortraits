@@ -1,0 +1,25 @@
+@import '../../partials/variables';
+
+div {
+    cursor: pointer;
+    margin: 10px 0;
+    color: $light-grey;
+
+    &:hover {
+        color: $light-gold;
+    }
+
+    &.selected {
+        color: $light-gold;
+    }
+
+    &.disabled {
+        pointer-events: none;
+        color: $grey;
+    }
+}
+
+h2 {
+    margin: 0;
+    font-size: 16px;
+}

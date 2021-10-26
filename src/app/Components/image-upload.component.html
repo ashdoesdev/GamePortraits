@@ -18,3 +18,8 @@
         <span><b>Click</b> or drag here to upload</span>
     </label>
 </div>
+
+<div class="paste-fetch">
+    <input type="text" id="inputFetch" placeholder="Paste URL from external site to fetch" [formControl]="inputFetch"/>
+    <fa-icon [icon]="['fas', 'chevron-right']" size="2x" (click)="fetch()"></fa-icon>
+</div>

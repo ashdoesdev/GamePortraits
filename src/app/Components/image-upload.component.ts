@@ -1,7 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { CanvasService } from './Services/canvas.service';
-import { SharedObservablesService } from './Services/shared-observables.service';
+import { CanvasService } from '../Services/canvas.service';
+import { SharedObservablesService } from '../Services/shared-observables.service';
 
 @Component({
   selector: 'image-upload',
@@ -12,6 +13,7 @@ export class ImageUploadComponent {
   @ViewChild('imageUpload') input: ElementRef; 
 
   public inputSubscription: Subscription;
+  public inputFetch = new FormControl('');
 
   constructor(
     private _imageResize: CanvasService,
@@ -51,7 +53,20 @@ export class ImageUploadComponent {
     }
   }
 
+  public fetch(): void {
+    const url = this.inputFetch.value;
+    const fileName = 'Fetched Image'
+    
+    fetch(url)
+      .then(async response => {
+        const blob = await response.blob();
+        const file = new File([blob], fileName);
+        this.setImage(file);
+      })
+  }
+
   public setImage(event: File): void {
+    this.ensureReset();
     this._imageResize.setImageSource(event, this.refresh.bind(this));
   }
 
@@ -60,7 +75,7 @@ export class ImageUploadComponent {
   }
 
   public removeImage(): void {
-    this.setInputValue('');
+    this.ensureReset();
     this._imageResize.setImageSource(null, this.refresh.bind(this));
   }
 
@@ -68,5 +83,11 @@ export class ImageUploadComponent {
     if (this.input) {
       this.input.nativeElement.value = value;
     }
+  }
+
+  private ensureReset(): void {
+    this._imageResize.imageSource = null;
+    this.setInputValue('');
+    this.refresh();
   }
 }

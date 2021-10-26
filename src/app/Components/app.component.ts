@@ -1,11 +1,11 @@
 import { ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import * as JSZip from 'jszip';
-import { Dimension } from './Model/Dimension';
-import { Game } from './Model/Game';
-import { FetchDataService } from './Services/fetch-data.service';
-import { CanvasService } from './Services/canvas.service';
+import { Dimension } from '../Model/Dimension';
+import { Game } from '../Model/Game';
+import { FetchDataService } from '../Services/fetch-data.service';
+import { CanvasService } from '../Services/canvas.service';
 import { Subscription } from 'rxjs';
-import { SharedObservablesService } from './Services/shared-observables.service';
+import { SharedObservablesService } from '../Services/shared-observables.service';
 declare var $: any;
 
 @Component({

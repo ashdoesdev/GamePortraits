@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Game } from './Model/Game';
-import { CanvasService } from './Services/canvas.service';
-import { SharedObservablesService } from './Services/shared-observables.service';
+import { Game } from '../Model/Game';
+import { CanvasService } from '../Services/canvas.service';
+import { SharedObservablesService } from '../Services/shared-observables.service';
 
 @Component({
   selector: 'game-selector',
