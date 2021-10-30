@@ -121,8 +121,8 @@ export class AppComponent {
     var zip = new JSZip();
 
     for (let area of this._imageResize.saveableAreas) {
-      var data = this._imageResize.primaryCanvas.toDataURL({ format: 'jpeg', top: area.bounds.top, left: area.bounds.left, width: area.bounds.width, height: area.bounds.height });
-      zip.file(`${area.name}.jpg`, data.substr(22), {base64: true});
+      var data = this._imageResize.primaryCanvas.toDataURL({ format: this._imageResize.selectedGame.extension, top: area.bounds.top, left: area.bounds.left, width: area.bounds.width, height: area.bounds.height });
+      zip.file(`${area.name}.${this._imageResize.selectedGame.extension}`, data.substr(22), {base64: true});
     }
 
     zip.generateAsync({type:"base64"}).then(function (base64) {
