@@ -2,7 +2,7 @@
 
 https://ashdoesdev.github.io/GamePortraits/
 
-Upload or enter link to generate portraits with the proper format, size, and names for certain games to utilize. 
+Upload or enter image url to generate portraits with the proper format, size, and names for certain games to utilize. 
 
 Games supported so far: 
 - Pathfinder: Kingmaker
